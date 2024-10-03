@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Medical Record</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_medical_record.css') }}">
+</head>
+<body>
+    <h1>Add Medical Record</h1>
+    <form method="POST" action="{{ url_for('add_medical_record', patient_id=patient_id) }}">
+        <label for="diagnosis">Diagnosis:</label>
+        <input type="text" id="diagnosis" name="diagnosis" required>
+        <br>
+        <label for="treatment">Treatment:</label>
+        <input type="text" id="treatment" name="treatment" required>
+        <br>
+        <input type="submit" value="Add Medical Record">
+    </form>
+</body>
+</html>

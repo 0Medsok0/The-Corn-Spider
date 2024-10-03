@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Patient</title>
+</head>
+<body>
+    <h1>Edit Patient</h1>
+    <form method="POST" action="{{ url_for('edit_patient', id=patient.id) }}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ patient.name }}" required>
+        <br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value="{{ patient.age }}" required>
+        <br>
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" name="gender" value="{{ patient.gender }}" required>
+        <br>
+        <input type="submit" value="Save Changes">
+    </form>
+</body>
+</html>

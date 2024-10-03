@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+</head>
+<body>
+    <h1>Welcome to the Medical Center</h1>
+    <ul>
+        <li><a href="{{ url_for('employees') }}">Employees</a></li>
+        <li><a href="{{ url_for('appointments') }}">Appointments</a></li>
+        <li><a href="{{ url_for('consultations') }}">Consultations</a></li>
+        <li><a href="{{ url_for('payments') }}">Payments</a></li>
+        <li><a href="{{ url_for('notifications') }}">Notifications</a></li>
+    </ul>
+</body>
+</html>

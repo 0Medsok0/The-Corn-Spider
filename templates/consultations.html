@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consultations</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <h1>Consultations</h1>
+    <a href="{{ url_for('add_consultation') }}">Add Consultation</a>
+    <table>
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date</th>
+        </tr>
+        {% for consultation in consultations %}
+        <tr>
+            <td>{{ consultation.patient_id }}</td>
+            <td>{{ consultation.doctor_id }}</td>
+            <td>{{ consultation.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

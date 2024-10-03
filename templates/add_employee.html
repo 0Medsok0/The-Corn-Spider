@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_employee.css') }}">
+</head>
+<body>
+    <h1>Add Employee</h1>
+    <form method="POST" action="{{ url_for('add_employee') }}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" required>
+        <br>
+        <input type="submit" value="Add Employee">
+    </form>
+</body>
+</html>

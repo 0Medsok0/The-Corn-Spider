@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Payment</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_payment.css') }}">
+
+</head>
+<body>
+    <h1>Add Payment</h1>
+    <form method="POST" action="{{ url_for('add_payment') }}">
+        <label for="patient_id">Patient ID:</label>
+        <input type="number" id="patient_id" name="patient_id" required>
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+        <br>
+        <label for="date">Date:</label>
+        <input type="datetime-local" id="date" name="date" required>
+        <br>
+        <input type="submit" value="Add Payment">
+    </form>
+</body>
+</html>

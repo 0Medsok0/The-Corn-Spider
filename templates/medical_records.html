@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Records</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+</head>
+<body>
+    <h1>Medical Records</h1>
+    <a href="{{ url_for('add_medical_record', patient_id=patient_id) }}">Add Medical Record</a>
+    <table>
+        <tr>
+            <th>Diagnosis</th>
+            <th>Treatment</th>
+        </tr>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.diagnosis }}</td>
+            <td>{{ record.treatment }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

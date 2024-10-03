@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Appointment</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_appointment.css') }}">
+</head>
+<body>
+    <h1>Add Appointment</h1>
+    <form method="POST" action="{{ url_for('add_appointment') }}">
+        <label for="patient_id">Patient ID:</label>
+        <input type="number" id="patient_id" name="patient_id" required>
+        <br>
+        <label for="doctor_id">Doctor ID:</label>
+        <input type="number" id="doctor_id" name="doctor_id" required>
+        <br>
+        <label for="date">Date:</label>
+        <input type="datetime-local" id="date" name="date" required>
+        <br>
+        <input type="submit" value="Add Appointment">
+    </form>
+</body>
+</html>
