@@ -75,7 +75,7 @@ class Appointment(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey('employee.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    # добавьте дополнительные поля по необходимости
+    
 
 # Маршруты для управления расписанием
 @app.route('/appointments')
