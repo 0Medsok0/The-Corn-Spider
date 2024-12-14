@@ -101,7 +101,7 @@ class MedicalRecord(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
     diagnosis = db.Column(db.String(100), nullable=False)
     treatment = db.Column(db.String(100), nullable=False)
-    # добавьте дополнительные поля по необходимости
+    
 
 # Маршруты для электронной медицинской карты
 @app.route('/medical_records/<int:patient_id>')
@@ -127,7 +127,7 @@ class Consultation(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey('employee.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    # добавьте дополнительные поля по необходимости
+   
 
 # Маршруты для онлайн-консультаций
 @app.route('/consultations')
@@ -153,7 +153,7 @@ class Payment(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    # добавьте дополнительные поля по необходимости
+    
 
 # Маршруты для онлайн-оплаты
 @app.route('/payments')
@@ -180,7 +180,7 @@ class Notification(db.Model):
     recipient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
     message = db.Column(db.String(200), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    # добавьте дополнительные поля по необходимости
+
 
 # Маршруты для уведомлений и напоминаний
 @app.route('/notifications')
