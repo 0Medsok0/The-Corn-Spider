@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hospital.db'
@@ -13,19 +14,19 @@ class Patient(db.Model):
 
 @app.route('/')
 def index():
-    patients = Patient.query.all()
-    return render_template('index.html', patients=patients)
+    return render_template('index.html')
 
-
-@app.route('/add', methods=['POST'])
+@app.route('/add', methods=['GET', 'POST'])
 def add_patient():
-    name = request.form['name']
-    age = request.form['age']
-    gender = request.form['gender']
-    new_patient = Patient(name=name, age=age, gender=gender)
-    db.session.add(new_patient)
-    db.session.commit()
-    return redirect(url_for('index'))
+    if request.method == 'POST':
+        name = request.form['name']
+        age = request.form['age']
+        gender = request.form['gender']
+        new_patient = Patient(name=name, age=age, gender=gender)
+        db.session.add(new_patient)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('add_patient.html')
 
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit_patient(id):
@@ -50,7 +51,6 @@ class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     position = db.Column(db.String(50), nullable=False)
-    
 
 @app.route('/employees')
 def employees():
@@ -75,7 +75,6 @@ class Appointment(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey('employee.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    
 
 # Маршруты для управления расписанием
 @app.route('/appointments')
@@ -88,7 +87,8 @@ def add_appointment():
     if request.method == 'POST':
         patient_id = request.form['patient_id']
         doctor_id = request.form['doctor_id']
-        date = request.form['date']
+        date_str = request.form['date']
+        date = datetime.datetime.strptime(date_str, '%Y-%m-%dT%H:%M')
         new_appointment = Appointment(patient_id=patient_id, doctor_id=doctor_id, date=date)
         db.session.add(new_appointment)
         db.session.commit()
@@ -101,7 +101,6 @@ class MedicalRecord(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
     diagnosis = db.Column(db.String(100), nullable=False)
     treatment = db.Column(db.String(100), nullable=False)
-    
 
 # Маршруты для электронной медицинской карты
 @app.route('/medical_records/<int:patient_id>')
@@ -127,7 +126,6 @@ class Consultation(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey('employee.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-   
 
 # Маршруты для онлайн-консультаций
 @app.route('/consultations')
@@ -140,7 +138,8 @@ def add_consultation():
     if request.method == 'POST':
         patient_id = request.form['patient_id']
         doctor_id = request.form['doctor_id']
-        date = request.form['date']
+        date_str = request.form['date']
+        date = datetime.datetime.strptime(date_str, '%Y-%m-%dT%H:%M')
         new_consultation = Consultation(patient_id=patient_id, doctor_id=doctor_id, date=date)
         db.session.add(new_consultation)
         db.session.commit()
@@ -153,7 +152,6 @@ class Payment(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    
 
 # Маршруты для онлайн-оплаты
 @app.route('/payments')
@@ -166,7 +164,8 @@ def add_payment():
     if request.method == 'POST':
         patient_id = request.form['patient_id']
         amount = request.form['amount']
-        date = request.form['date']
+        date_str = request.form['date']
+        date = datetime.datetime.strptime(date_str, '%Y-%m-%dT%H:%M')
         new_payment = Payment(patient_id=patient_id, amount=amount, date=date)
         db.session.add(new_payment)
         db.session.commit()
@@ -181,7 +180,6 @@ class Notification(db.Model):
     message = db.Column(db.String(200), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
 
-
 # Маршруты для уведомлений и напоминаний
 @app.route('/notifications')
 def notifications():
@@ -193,16 +191,38 @@ def add_notification():
     if request.method == 'POST':
         recipient_id = request.form['recipient_id']
         message = request.form['message']
-        date = request.form['date']
+        date_str = request.form['date']
+        print(f"recipient_id: {recipient_id}, message: {message}, date_str: {date_str}") 
+        date = datetime.datetime.strptime(date_str, '%Y-%m-%dT%H:%M')
         new_notification = Notification(recipient_id=recipient_id, message=message, date=date)
         db.session.add(new_notification)
         db.session.commit()
         return redirect(url_for('notifications'))
     return render_template('add_notification.html')
 
+# Маршрут для отчетов
+@app.route('/reports')
+def reports():
+    data = {
+        'Всего пациентов': Patient.query.count(),
+        'Общее количество сотрудников': Employee.query.count(),
+        'Общее количество назначений': Appointment.query.count(),
+        'Общее количество консультаций': Consultation.query.count(),
+        'Всего было платежей': Payment.query.count(),
+        'Общее количество уведомлений': Notification.query.count(),
+    }
+    return render_template('reports.html', data=data)
+
+@app.route('/patients')
+def patients():
+    patients = Patient.query.all()
+    return render_template('patients.html', patients=patients)
+
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+
+
 
