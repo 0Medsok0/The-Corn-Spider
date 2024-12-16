@@ -3,16 +3,35 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
-
 </head>
 <body>
-    <h1>Welcome to the Medical Center</h1>
+    <h1>Добро пожаловать в Медицинский центр</h1>
     <ul>
-        <li><a href="{{ url_for('employees') }}">Employees</a></li>
-        <li><a href="{{ url_for('appointments') }}">Appointments</a></li>
-        <li><a href="{{ url_for('consultations') }}">Consultations</a></li>
-        <li><a href="{{ url_for('payments') }}">Payments</a></li>
-        <li><a href="{{ url_for('notifications') }}">Notifications</a></li>
+        <li><a href="{{ url_for('employees') }}">Работники</a></li>
+        <li><a href="{{ url_for('appointments') }}">Расписание приема</a></li>
+        <li><a href="{{ url_for('consultations') }}">Консультации</a></li>
+        <li><a href="{{ url_for('payments') }}">Платежи</a></li>
+        <li><a href="{{ url_for('notifications') }}">Уведомления</a></li>
+        <li><a href="{{ url_for('patients') }}">Пациенты</a></li>
+        <li><a href="{{ url_for('reports') }}">Отчеты</a></li>
     </ul>
+    <div class="content">
+        <h2>О нашем медицинском центре</h2>
+        <p>Медицинский центр был основан в 1990 году с миссией предоставления высококачественной медицинской помощи всем пациентам. За эти годы мы выросли и развились, став одним из ведущих медицинских учреждений в регионе. Наш центр предлагает широкий спектр медицинских услуг, включая диагностику, лечение и реабилитацию.</p>
+        <p>Наша история полна достижений и инноваций. Мы постоянно инвестируем в современные технологии и обучение нашего персонала, чтобы обеспечить нашим пациентам лучший уход. Мы гордимся тем, что помогаем людям жить здоровой и полноценной жизнью.</p>
+    </div>
+    
+
+    <div class="achievements">
+        <h3>Наши достижения</h3>
+        <ul>
+            <li>Победитель премии "Лучший медицинский центр" в 2020 году.</li>
+            <li>Внедрение инновационных методов лечения, улучшающих качество жизни пациентов.</li>
+            <li>Открытие нового отделения кардиологии в 2022 году.</li>
+            <li>Проведение более 10,000 успешных операций за последние 5 лет.</li>
+            <li>Активное участие в медицинских исследованиях и публикациях.</li>
+        </ul>
+    </div>
+    
 </body>
 </html>

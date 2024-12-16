@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reports</title>
+    <title>Отчеты</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
-    <h1>Reports</h1>
+    <h1>Отчеты</h1>
     <table>
         <tr>
-            <th>Metric</th>
-            <th>Value</th>
+            <th>Показатель</th>
+            <th>Значение</th>
         </tr>
         {% for metric, value in data.items() %}
         <tr>

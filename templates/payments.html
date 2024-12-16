@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Payments</title>
+    <title>Платежи</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
 </head>
 <body>
-    <h1>Payments</h1>
-    <a href="{{ url_for('add_payment') }}">Add Payment</a>
+    <h1>Платежи</h1>
+    <a href="{{ url_for('add_payment') }}">Добавить платеж</a>
     <table>
         <tr>
-            <th>Patient</th>
-            <th>Amount</th>
-            <th>Date</th>
+            <th>Пациент</th>
+            <th>Количество</th>
+            <th>Дата</th>
         </tr>
         {% for payment in payments %}
         <tr>

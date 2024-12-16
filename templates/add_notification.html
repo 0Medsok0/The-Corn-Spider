@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Notification</title>
+    <title>Добавить уведомление</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_notification.css') }}">
 
 </head>
 <body>
-    <h1>Add Notification</h1>
+    <h1>Добавить уведомление</h1>
     <form method="POST" action="{{ url_for('add_notification') }}">
-        <label for="recipient_id">Recipient ID:</label>
+        <label for="recipient_id">Идентификатор получателя:</label>
         <input type="number" id="recipient_id" name="recipient_id" required>
         <br>
-        <label for="message">Message:</label>
+        <label for="message">Сообщение:</label>
         <textarea id="message" name="message" required></textarea>
         <br>
-        <label for="date">Date:</label>
+        <label for="date">Дата:</label>
         <input type="datetime-local" id="date" name="date" required>
         <br>
-        <input type="submit" value="Add Notification">
+        <input type="submit" value="Добавить уведомление">
     </form>
 </body>
 </html>

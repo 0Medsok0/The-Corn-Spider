@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Employee</title>
+    <title>Добавить сотрудника</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_employee.css') }}">
 </head>
 <body>
-    <h1>Add Employee</h1>
+    <h1>Добавить сотрудника</h1>
     <form method="POST" action="{{ url_for('add_employee') }}">
-        <label for="name">Name:</label>
+        <label for="name">Имя:</label>
         <input type="text" id="name" name="name" required>
         <br>
-        <label for="position">Position:</label>
+        <label for="position">Позиция:</label>
         <input type="text" id="position" name="position" required>
         <br>
-        <input type="submit" value="Add Employee">
+        <input type="submit" value="Добавить сотрудника">
     </form>
 </body>
 </html>

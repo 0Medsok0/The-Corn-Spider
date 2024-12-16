@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Medical Record</title>
+    <title>Добавить медицинскую карту</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_medical_record.css') }}">
 </head>
 <body>
-    <h1>Add Medical Record</h1>
+    <h1>Добавить медицинскую карту</h1>
     <form method="POST" action="{{ url_for('add_medical_record', patient_id=patient_id) }}">
-        <label for="diagnosis">Diagnosis:</label>
+        <label for="diagnosis">Диагноз:</label>
         <input type="text" id="diagnosis" name="diagnosis" required>
         <br>
-        <label for="treatment">Treatment:</label>
+        <label for="treatment">Лечение:</label>
         <input type="text" id="treatment" name="treatment" required>
         <br>
-        <input type="submit" value="Add Medical Record">
+        <input type="submit" value="Добавить медицинскую карту">
     </form>
 </body>
 </html>

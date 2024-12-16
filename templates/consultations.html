@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Consultations</title>
+    <title>Консультации</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
-    <h1>Consultations</h1>
-    <a href="{{ url_for('add_consultation') }}">Add Consultation</a>
+    <h1>Консультации</h1>
+    <a href="{{ url_for('add_consultation') }}">Добавить консультацию</a>
     <table>
         <tr>
-            <th>Patient</th>
-            <th>Doctor</th>
-            <th>Date</th>
+            <th>Пациент</th>
+            <th>Врач</th>
+            <th>Дата</th>
         </tr>
         {% for consultation in consultations %}
         <tr>

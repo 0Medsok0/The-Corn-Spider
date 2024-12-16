@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_patient.css') }}">
+</head>
+<body>
+    <form method="POST" action="{{ url_for('add_patient') }}">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" name="age" required>
+        <br>
+        <label for="gender">Пол:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Мужской</option>
+            <option value="Female">Женский</option>
+        </select>
+        <br>
+        <input type="submit" value="Добавить пациента">
+    </form>
+</body>
+</html>

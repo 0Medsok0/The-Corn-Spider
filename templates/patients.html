@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Пациенты</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='patients.css') }}">
+</head>
+<body>
+    <h1>Список пациентов</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Возраст</th>
+            <th>Пол</th>
+        </tr>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>
+                <a href="{{ url_for('edit_patient', id=patient.id) }}">Редактировать</a> |
+                <a href="{{ url_for('delete_patient', id=patient.id) }}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a class='a_add' href="{{ url_for('add_patient') }}">Добавить пациента</a>
+</body>
+</html>

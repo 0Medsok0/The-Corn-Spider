@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Consultation</title>
+    <title>Добавить консультацию</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_consultation.css') }}">
 
 </head>
 <body>
-    <h1>Add Consultation</h1>
+    <h1>Добавить консультацию</h1>
     <form method="POST" action="{{ url_for('add_consultation') }}">
-        <label for="patient_id">Patient ID:</label>
+        <label for="patient_id">Идентификатор пациента:</label>
         <input type="number" id="patient_id" name="patient_id" required>
         <br>
-        <label for="doctor_id">Doctor ID:</label>
+        <label for="doctor_id">Идентификатор врача:</label>
         <input type="number" id="doctor_id" name="doctor_id" required>
         <br>
-        <label for="date">Date:</label>
+        <label for="date">Дата:</label>
         <input type="datetime-local" id="date" name="date" required>
         <br>
-        <input type="submit" value="Add Consultation">
+        <input type="submit" value="Добавить консультацию">
     </form>
 </body>
 </html>
