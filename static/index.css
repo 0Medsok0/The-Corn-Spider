@@ -16,6 +16,7 @@ ul {
     padding: 0;
     margin: 0;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 li {
@@ -33,4 +34,41 @@ a {
 
 a:hover {
     background-color: #ddd;
+}
+
+.content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.content h2 {
+    color: #333;
+}
+.content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.achievements {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.achievements h3 {
+    color: #333;
+}
+.achievements ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.achievements ul li {
+    color: #666;
+    margin-bottom: 10px;
+    display: block;
 }
